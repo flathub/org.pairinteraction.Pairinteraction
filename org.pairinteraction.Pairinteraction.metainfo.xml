@@ -4,6 +4,7 @@
 
   <name>pairinteraction</name>
   <summary>A Rydberg Interaction Calculator</summary>
+  <developer_name>The pairinteraction developers</developer_name>
 
   <url type="homepage">https://www.pairinteraction.org</url>
   <url type="bugtracker">https://github.com/pairinteraction/pairinteraction/issues</url>
