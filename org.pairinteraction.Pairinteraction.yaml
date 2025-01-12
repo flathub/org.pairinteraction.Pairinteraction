@@ -83,8 +83,8 @@ modules:
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/11.1.1.tar.gz
-        sha256: 482eed9efbc98388dbaee5cb5f368be5eca4893456bb358c18b7ff71f835ae43
+        url: https://github.com/fmtlib/fmt/archive/11.1.2.tar.gz
+        sha256: d8773cf062cc806d4dd4df658111f15ba7a2c9c65db5084d2491696828b1eb97
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -121,8 +121,8 @@ modules:
       - PREFIX=/app
     sources:
       - type: archive
-        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.28.tar.gz
-        sha256: f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1
+        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.29.tar.gz
+        sha256: 38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb
         x-checker-data:
           type: anitya
           project-id: 2540
