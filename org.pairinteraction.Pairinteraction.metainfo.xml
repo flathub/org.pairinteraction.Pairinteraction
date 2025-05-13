@@ -22,15 +22,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main window with sample configuration for a pairpotential calculation with two Rb atoms</caption>
-      <image>https://www.pairinteraction.org/pairinteraction/sphinx/html/_static/slides/screen-osx-pairpotential.jpg</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v0.9.9/doc/sphinx/_static/slides/screen-osx-pairpotential.jpg</image>
     </screenshot>
     <screenshot>
       <caption>Stark map for a single Rydberg atom</caption>
-      <image>https://www.pairinteraction.org/pairinteraction/sphinx/html/_static/slides/screen-osx-starkmap.jpg</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v0.9.9/doc/sphinx/_static/slides/screen-osx-starkmap.jpg</image>
     </screenshot>
     <screenshot>
       <caption>Quadratic Zeeman effect for a single Rydberg atom</caption>
-      <image>https://www.pairinteraction.org/pairinteraction/sphinx/html/_static/slides/screen-osx-zeemanmap.jpg</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v0.9.9/doc/sphinx/_static/slides/screen-osx-zeemanmap.jpg</image>
     </screenshot>
   </screenshots>
   <categories>
