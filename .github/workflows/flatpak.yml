@@ -10,7 +10,7 @@ jobs:
     name: "Flatpak"
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:kde-5.15-24.08
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
       options: --privileged
     steps:
     - uses: actions/checkout@v4
@@ -18,4 +18,5 @@ jobs:
       with:
         bundle: pairinteraction.flatpak
         manifest-path: org.pairinteraction.Pairinteraction.yaml
+        cache-key: flatpak-builder-${{ github.sha }}
         run-tests: true

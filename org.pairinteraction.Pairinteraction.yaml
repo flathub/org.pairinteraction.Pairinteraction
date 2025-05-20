@@ -1,115 +1,29 @@
 app-id: org.pairinteraction.Pairinteraction
 
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 
-base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-24.08
+base: io.qt.PySide.BaseApp
+base-version: '6.8'
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 build-options:
   env:
     - BASEAPP_REMOVE_WEBENGINE=1
-    - QT_QPA_PLATFORM=offscreen
-    - CTEST_OUTPUT_ON_FAILURE=1
+    - BASEAPP_REMOVE_NUMPY=1
 
 command: start_pairinteraction_gui
 
 finish-args:
+  - --device=dri
+  - --env=JUPYTER_PLATFORM_DIRS=1
   - --share=ipc
+  - --share=network
   - --socket=fallback-x11
   - --socket=wayland
-  - --device=dri
 
 modules:
-  - name: boost
-    buildsystem: simple
-    build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=serialization
-      - ./b2 headers
-      - ./b2 install
-    sources:
-      - type: archive
-        url: https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.gz
-        sha256: 3621533e820dcab1e8012afd583c0c73cf0f77694952b81352bf38c1488f9cb4
-        x-checker-data:
-          type: anitya
-          project-id: 6845
-          stable-only: true
-          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
-    cleanup:
-      - '*.a'
-      - /bin
-      - /include
-      - /share
-
-  - name: doctest
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DDOCTEST_WITH_TESTS=Off
-    sources:
-      - type: archive
-        url: https://github.com/doctest/doctest/archive/v2.4.12.tar.gz
-        sha256: 73381c7aa4dee704bd935609668cf41880ea7f19fa0504a200e13b74999c2d70
-        x-checker-data:
-          type: anitya
-          project-id: 288147
-          stable-only: true
-          url-template: https://github.com/doctest/doctest/archive/v$version.tar.gz
-    cleanup:
-      - '*'
-
-  - name: eigen
-    buildsystem: cmake-ninja
-    builddir: true
-    sources:
-      - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
-        x-checker-data:
-          type: anitya
-          project-id: 666
-          stable-only: true
-          url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
-    cleanup:
-      - '*'
-
-  - name: fmt
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DFMT_TEST=Off
-    sources:
-      - type: archive
-        url: https://github.com/fmtlib/fmt/archive/11.2.0.tar.gz
-        sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
-        x-checker-data:
-          type: anitya
-          project-id: 11526
-          stable-only: true
-          url-template: https://github.com/fmtlib/fmt/archive/$version.tar.gz
-    cleanup:
-      - '*'
-
-  - name: gsl
-    sources:
-      - type: archive
-        url: https://ftpmirror.gnu.org/gsl/gsl-2.8.tar.gz
-        sha256: 6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190
-        x-checker-data:
-          type: anitya
-          project-id: 1267
-          stable-only: true
-          url-template: https://ftpmirror.gnu.org/gsl/gsl-$version.tar.gz
-    cleanup:
-      - '*.a'
-      - '*.la'
-      - /bin
-      - /include
-      - /share
-
   - name: openblas
     no-autogen: true
     make-args:
@@ -134,46 +48,163 @@ modules:
       - /include
       - /share
 
-  - name: swig
+  - name: eigen
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: archive
-        url: http://prdownloads.sourceforge.net/swig/swig-4.3.1.tar.gz
-        sha256: 44fc829f70f1e17d635a2b4d69acab38896699ecc24aa023e516e0eabbec61b8
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
+        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
         x-checker-data:
           type: anitya
-          project-id: 4919
+          project-id: 666
           stable-only: true
-          url-template: http://prdownloads.sourceforge.net/swig/swig-$version.tar.gz
+          url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     cleanup:
       - '*'
+
+  - name: fmt
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DFMT_TEST=Off
+    sources:
+      - type: archive
+        url: https://github.com/fmtlib/fmt/archive/11.1.4.tar.gz
+        sha256: ac366b7b4c2e9f0dde63a59b3feb5ee59b67974b14ee5dc9ea8ad78aa2c1ee1e
+        x-checker-data:
+          type: anitya
+          project-id: 11526
+          stable-only: true
+          url-template: https://github.com/fmtlib/fmt/archive/$version.tar.gz
+    cleanup:
+      - '*'
+
+  - name: spdlog
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DSPDLOG_BUILD_SHARED=Off
+      - -DSPDLOG_BUILD_PIC=On
+    sources:
+      - type: archive
+        url: https://github.com/gabime/spdlog/archive/refs/tags/v1.15.2.tar.gz
+        sha256: 7a80896357f3e8e920e85e92633b14ba0f229c506e6f978578bdc35ba09e9a5d
+        x-checker-data:
+          type: anitya
+          project-id: 15599
+          stable-only: true
+          url-template: https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - '*'
+
+  - name: nlohmann_json
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DJSON_BuildTests=Off
+    sources:
+      - type: archive
+        url: https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz
+        sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+        x-checker-data:
+          type: anitya
+          project-id: 11152
+          stable-only: true
+          url-template: https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - '*'
+
+  - name: cpptrace
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCPPTRACE_BUILD_TESTING=Off
+      - -DCPPTRACE_GET_SYMBOLS_WITH_LIBDL=On
+    sources:
+      - type: archive
+        url: https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v0.7.5.tar.gz
+        sha256: 7df0cae3d7da9be2dc82616292cc86a4a08a8209898716231aef80477a8ca35d
+    cleanup:
+      - '*'
+
+  - name: oneTBB
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DTBB_TEST=Off
+      - -DTBB_STRICT=Off
+    sources:
+      - type: archive
+        url: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.1.0.tar.gz
+        sha256: ed067603ece0dc832d2881ba5c516625ac2522c665d95f767ef6304e34f961b5
+        x-checker-data:
+          type: anitya
+          project-id: 227581
+          stable-only: true
+          url-template: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v$version.tar.gz
+    cleanup:
+      - '*.a'
+      - /bin
+      - /include
+      - /share
 
   - python3-package-installation.yaml
 
   - name: pairinteraction
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DBUILD_TESTING=On
-      - -DFETCHCONTENT_FULLY_DISCONNECTED=On
-      - -DVERSION_SOFTWARE=v0.9.9
+    buildsystem: simple
+    build-options:
+      env:
+        SKBUILD_BUILD_VERBOSE: "true"
+        CMAKE_ARGS: >-
+          -DBUILD_TESTING=On
+          -DFETCHCONTENT_FULLY_DISCONNECTED=On
+          -DFETCHCONTENT_SOURCE_DIR_DUCKDB=/run/build/pairinteraction/_deps/duckdb
+          -DFETCHCONTENT_SOURCE_DIR_DOCTEST=/run/build/pairinteraction/_deps/doctest
+          -DFETCHCONTENT_SOURCE_DIR_HTTPLIB=/run/build/pairinteraction/_deps/httplib
+          -DFETCHCONTENT_SOURCE_DIR_MINIZ=/run/build/pairinteraction/_deps/miniz
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --no-deps --no-build-isolation --prefix=${FLATPAK_DEST} "."
     sources:
       - type: archive
-        url: https://github.com/pairinteraction/pairinteraction/archive/v0.9.9.tar.gz
-        sha256: 800529dac49a7723969f4d0388ee66869c8728178b6b17d13f12856204b79fc2
-      - type: patch
-        path: python-site-packages.patch
-      - dest: _deps/wignersymbols-src/
+        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.0.1.tar.gz
+        sha256: b32336763c2ddc6940cc339bedbe0f17350fbf7c25bc748614a6c7011cf50c23
+      - dest: _deps/duckdb
         type: archive
-        url: https://github.com/joeydumont/wignerSymbols/archive/337dd7e634f5990f432bb53c7a69ad62c009000a.tar.gz
-        sha256: 980766f5a441fc1f26bcf28a6d04d9e0578883352750ba105680ad651737dc22
+        url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-amd64.zip
+        sha256: 767c4163df6c6fb8dc07d44d6db3d081437544282185f4aae9bd1a9d9517a6c9
+        only-arches:
+          - x86_64
+      - dest: _deps/duckdb
+        type: archive
+        url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-aarch64.zip
+        sha256: dc396aa224bcc190f29c9b3993ea366cb75f6b5edc28028484520d74e1ae590b
+        only-arches:
+          - aarch64
+      - dest: _deps/doctest
+        type: archive
+        url: https://github.com/doctest/doctest/archive/refs/tags/v2.4.12.tar.gz
+        sha256: 73381c7aa4dee704bd935609668cf41880ea7f19fa0504a200e13b74999c2d70
+      - dest: _deps/httplib
+        type: archive
+        url: https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.20.0.tar.gz
+        sha256: 18064587e0cc6a0d5d56d619f4cbbcaba47aa5d84d86013abbd45d95c6653866
+      - dest: _deps/miniz
+        type: archive
+        url: https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
+        sha256: ada38db0b703a56d3dd6d57bf84a9c5d664921d870d8fea4db153979fb5332c5
       - type: file
         path: org.pairinteraction.Pairinteraction.metainfo.xml
       - type: file
         path: pairinteraction.desktop
       - type: file
         path: pairinteraction.png
+      - type: script
+        dest-filename: start_pairinteraction_gui
+        commands:
+          - exec /app/bin/pairinteraction --log-level INFO gui "$@"
     post-install:
+      - install -Dm0755 start_pairinteraction_gui -t /app/bin
       - install -Dm0644 org.pairinteraction.Pairinteraction.metainfo.xml -t /app/share/metainfo
       - install -Dm0644 pairinteraction.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
       - install -Dm0644 pairinteraction.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/$FLATPAK_ID.png
