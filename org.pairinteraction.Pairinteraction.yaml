@@ -70,8 +70,8 @@ modules:
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/11.1.4.tar.gz
-        sha256: ac366b7b4c2e9f0dde63a59b3feb5ee59b67974b14ee5dc9ea8ad78aa2c1ee1e
+        url: https://github.com/fmtlib/fmt/archive/11.2.0.tar.gz
+        sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -88,8 +88,8 @@ modules:
       - -DSPDLOG_BUILD_PIC=On
     sources:
       - type: archive
-        url: https://github.com/gabime/spdlog/archive/refs/tags/v1.15.2.tar.gz
-        sha256: 7a80896357f3e8e920e85e92633b14ba0f229c506e6f978578bdc35ba09e9a5d
+        url: https://github.com/gabime/spdlog/archive/refs/tags/v1.15.3.tar.gz
+        sha256: 15a04e69c222eb6c01094b5c7ff8a249b36bb22788d72519646fb85feb267e67
         x-checker-data:
           type: anitya
           project-id: 15599
@@ -155,7 +155,7 @@ modules:
     buildsystem: simple
     build-options:
       env:
-        SKBUILD_BUILD_VERBOSE: "true"
+        SKBUILD_BUILD_VERBOSE: 'true'
         CMAKE_ARGS: >-
           -DBUILD_TESTING=On
           -DFETCHCONTENT_FULLY_DISCONNECTED=On
@@ -164,7 +164,8 @@ modules:
           -DFETCHCONTENT_SOURCE_DIR_HTTPLIB=/run/build/pairinteraction/_deps/httplib
           -DFETCHCONTENT_SOURCE_DIR_MINIZ=/run/build/pairinteraction/_deps/miniz
     build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --no-deps --no-build-isolation --prefix=${FLATPAK_DEST} "."
+      - pip3 install --verbose --exists-action=i --no-index --no-deps --no-build-isolation
+        --prefix=${FLATPAK_DEST} "."
     sources:
       - type: archive
         url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.0.1.tar.gz
