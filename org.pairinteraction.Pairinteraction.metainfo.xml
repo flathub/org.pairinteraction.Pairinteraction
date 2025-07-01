@@ -22,15 +22,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main window with sample configuration for a pairpotential calculation with two Rb atoms</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.0.1/docs/_static/gui_slides/pair_potential.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.1.0/docs/_static/gui_slides/pair_potential.png</image>
     </screenshot>
     <screenshot>
       <caption>Stark map for a single Rydberg atom</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.0.1/docs/_static/gui_slides/stark_map.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.1.0/docs/_static/gui_slides/stark_map.png</image>
     </screenshot>
     <screenshot>
       <caption>Lifetimes of a single Rydberg state</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.0.1/docs/_static/gui_slides/lifetimes.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.1.0/docs/_static/gui_slides/lifetimes.png</image>
     </screenshot>
   </screenshots>
   <categories>
@@ -40,6 +40,16 @@
     <content_attribute id="social-info">mild</content_attribute>
   </content_rating>
   <releases>
+    <release version="v2.1.0" date="2025-06-18" type="stable">
+      <description>
+        <p>Builds are available for GNU/Linux, macOS, and Windows. The software can be installed via pip from pypi.org:</p>
+        <p><code>pip install pairinteraction</code></p>
+        <p>Changelog</p>
+        <ul>
+          <li>add possibility for a user to set a custom GreenTensor</li>
+        </ul>
+      </description>
+    </release>
     <release version="v2.0.1" date="2025-05-19" type="stable">
       <description>
         <p>Builds are available for GNU/Linux, macOS, and Windows. The software can be installed via pip from pypi.org:</p>

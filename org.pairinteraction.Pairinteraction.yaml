@@ -168,8 +168,8 @@ modules:
         --prefix=${FLATPAK_DEST} "."
     sources:
       - type: archive
-        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.0.1.tar.gz
-        sha256: b32336763c2ddc6940cc339bedbe0f17350fbf7c25bc748614a6c7011cf50c23
+        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.1.0.tar.gz
+        sha256: d75b22d08d752db3e780e7f20896becc3222fe34c14bf513f335c863e3fac71c
       - dest: _deps/duckdb
         type: archive
         url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-amd64.zip
