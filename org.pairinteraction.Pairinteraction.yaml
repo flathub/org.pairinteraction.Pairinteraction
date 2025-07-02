@@ -158,6 +158,7 @@ modules:
 
   - name: pairinteraction
     buildsystem: simple
+    run-tests: true
     build-options:
       env:
         SKBUILD_BUILD_VERBOSE: 'true'
@@ -171,6 +172,8 @@ modules:
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --no-deps --no-build-isolation
         --prefix=${FLATPAK_DEST} "."
+    test-commands:
+      - pytest --verbose -s
     sources:
       - type: archive
         url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.1.0.tar.gz
