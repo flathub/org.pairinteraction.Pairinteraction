@@ -70,8 +70,8 @@ modules:
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/11.2.0.tar.gz
-        sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
+        url: https://github.com/fmtlib/fmt/archive/12.0.0.tar.gz
+        sha256: aa3e8fbb6a0066c03454434add1f1fc23299e85758ceec0d7d2d974431481e40
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -123,8 +123,8 @@ modules:
       - -DCPPTRACE_GET_SYMBOLS_WITH_LIBDL=On
     sources:
       - type: archive
-        url: https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.3.tar.gz
-        sha256: d9145f3ca2b828a984477fbfb49616b1541aa249af945615f9c2abad573a71cc
+        url: https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.4.tar.gz
+        sha256: 5c9f5b301e903714a4d01f1057b9543fa540f7bfcc5e3f8bd1748e652e24f9ea
         x-checker-data:
           type: anitya
           project-id: 378001
