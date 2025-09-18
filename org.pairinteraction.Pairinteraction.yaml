@@ -67,11 +67,12 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=On
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/11.2.0.tar.gz
-        sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
+        url: https://github.com/fmtlib/fmt/archive/12.0.0.tar.gz
+        sha256: aa3e8fbb6a0066c03454434add1f1fc23299e85758ceec0d7d2d974431481e40
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -86,6 +87,7 @@ modules:
     config-opts:
       - -DSPDLOG_BUILD_SHARED=Off
       - -DSPDLOG_BUILD_PIC=On
+      - -DSPDLOG_FMT_EXTERNAL=On
     sources:
       - type: archive
         url: https://github.com/gabime/spdlog/archive/refs/tags/v1.15.3.tar.gz
@@ -123,8 +125,8 @@ modules:
       - -DCPPTRACE_GET_SYMBOLS_WITH_LIBDL=On
     sources:
       - type: archive
-        url: https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.3.tar.gz
-        sha256: d9145f3ca2b828a984477fbfb49616b1541aa249af945615f9c2abad573a71cc
+        url: https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.4.tar.gz
+        sha256: 5c9f5b301e903714a4d01f1057b9543fa540f7bfcc5e3f8bd1748e652e24f9ea
         x-checker-data:
           type: anitya
           project-id: 378001
@@ -161,6 +163,7 @@ modules:
     run-tests: true
     build-options:
       env:
+        JUPYTER_PATH: '/app/share/jupyter'
         SKBUILD_BUILD_VERBOSE: 'true'
         CMAKE_ARGS: >-
           -DBUILD_TESTING=On
@@ -176,8 +179,8 @@ modules:
       - pytest --verbose -s
     sources:
       - type: archive
-        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.2.0.tar.gz
-        sha256: 21c41fbbea220a18506f85dc5e75f2f418711ca677d4771357e39a18b5a8f01f
+        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.2.2.tar.gz
+        sha256: 2ec1c3923d753b768ad156ae24cd29445731ccd2a3fd3679792bc3a1109ea95f
       - dest: _deps/duckdb
         type: archive
         url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-amd64.zip
@@ -196,8 +199,8 @@ modules:
         sha256: 73381c7aa4dee704bd935609668cf41880ea7f19fa0504a200e13b74999c2d70
       - dest: _deps/httplib
         type: archive
-        url: https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.20.0.tar.gz
-        sha256: 18064587e0cc6a0d5d56d619f4cbbcaba47aa5d84d86013abbd45d95c6653866
+        url: https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.25.0.tar.gz
+        sha256: ac7c59fa72325d4cb9f73af266312d82632ac35a5c4c8a1be620c1f946ec9cea
       - dest: _deps/miniz
         type: archive
         url: https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
