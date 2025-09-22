@@ -53,8 +53,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+        url: https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.bz2
+        sha256: d2771c18e3e35b88b38dfb2fef7ea547515d3b6c2f2a9c1f96631a046ff80c6c
         x-checker-data:
           type: anitya
           project-id: 666
@@ -163,7 +163,7 @@ modules:
     run-tests: true
     build-options:
       env:
-        JUPYTER_PATH: '/app/share/jupyter'
+        JUPYTER_PATH: /app/share/jupyter
         SKBUILD_BUILD_VERBOSE: 'true'
         CMAKE_ARGS: >-
           -DBUILD_TESTING=On
