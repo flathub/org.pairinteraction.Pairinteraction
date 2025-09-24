@@ -1,0 +1,51 @@
+From fa67ae5c97d22fbc96ec2cf3c821fdb5a832e036 Mon Sep 17 00:00:00 2001
+From: Henri Menke <henri@henrimenke.de>
+Date: Mon, 22 Sep 2025 12:33:16 +0200
+Subject: [PATCH] Add missing headers
+
+---
+ src/cpp/src/basis/BasisAtom.cpp        | 2 ++
+ src/cpp/src/basis/BasisPair.cpp        | 1 +
+ src/cpp/src/basis/BasisPairCreator.cpp | 1 +
+ 3 files changed, 4 insertions(+)
+
+diff --git a/src/cpp/src/basis/BasisAtom.cpp b/src/cpp/src/basis/BasisAtom.cpp
+index fec0f926..d74d0465 100644
+--- a/src/cpp/src/basis/BasisAtom.cpp
++++ b/src/cpp/src/basis/BasisAtom.cpp
+@@ -6,6 +6,8 @@
+ #include "pairinteraction/database/Database.hpp"
+ #include "pairinteraction/ket/KetAtom.hpp"
+ 
++#include <cassert>
++
+ namespace pairinteraction {
+ template <typename Scalar>
+ BasisAtom<Scalar>::BasisAtom(Private /*unused*/, ketvec_t &&kets, std::string &&id_of_kets,
+diff --git a/src/cpp/src/basis/BasisPair.cpp b/src/cpp/src/basis/BasisPair.cpp
+index 4724165f..25aa331e 100644
+--- a/src/cpp/src/basis/BasisPair.cpp
++++ b/src/cpp/src/basis/BasisPair.cpp
+@@ -12,6 +12,7 @@
+ #include "pairinteraction/utils/Range.hpp"
+ #include "pairinteraction/utils/tensor.hpp"
+ 
++#include <cassert>
+ #include <memory>
+ #include <oneapi/tbb.h>
+ #include <vector>
+diff --git a/src/cpp/src/basis/BasisPairCreator.cpp b/src/cpp/src/basis/BasisPairCreator.cpp
+index 201c212e..5828c5b6 100644
+--- a/src/cpp/src/basis/BasisPairCreator.cpp
++++ b/src/cpp/src/basis/BasisPairCreator.cpp
+@@ -12,6 +12,7 @@
+ #include "pairinteraction/system/SystemAtom.hpp"
+ 
+ #include <algorithm>
++#include <cassert>
+ #include <limits>
+ #include <memory>
+ 
+-- 
+2.51.0
+
