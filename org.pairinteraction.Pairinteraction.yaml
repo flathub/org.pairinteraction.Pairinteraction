@@ -181,6 +181,8 @@ modules:
       - type: archive
         url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.2.2.tar.gz
         sha256: 2ec1c3923d753b768ad156ae24cd29445731ccd2a3fd3679792bc3a1109ea95f
+      - type: patch
+        path: Add-missing-headers.patch
       - dest: _deps/duckdb
         type: archive
         url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-amd64.zip
