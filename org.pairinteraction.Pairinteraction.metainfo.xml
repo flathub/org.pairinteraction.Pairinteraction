@@ -22,15 +22,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main window with sample configuration for a pairpotential calculation with two Rb atoms</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.2.2/docs/_static/gui_slides/pair_potential.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.3.0/docs/_static/gui_slides/pair_potential.png</image>
     </screenshot>
     <screenshot>
       <caption>Stark map for a single Rydberg atom</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.2.2/docs/_static/gui_slides/stark_map.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.3.0/docs/_static/gui_slides/stark_map.png</image>
     </screenshot>
     <screenshot>
       <caption>Lifetimes of a single Rydberg state</caption>
-      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.2.2/docs/_static/gui_slides/lifetimes.png</image>
+      <image>https://github.com/pairinteraction/pairinteraction/raw/refs/tags/v2.3.0/docs/_static/gui_slides/lifetimes.png</image>
     </screenshot>
   </screenshots>
   <categories>
@@ -40,6 +40,16 @@
     <content_attribute id="social-info">mild</content_attribute>
   </content_rating>
   <releases>
+    <release version="v2.3.0" date="2025-10-09" type="stable">
+      <description>
+        <ul>
+          <li>changed the structure of real and complex in the code (complex can now be accessed directly via the <code>pairinteraction</code> namespace and the <code>pairinteraction.complex</code> namespace is now deprecated (<code>pairinteraction.real</code> can still be used as before)</li>
+          <li>allow creating single atom superposition states and calculate overlaps and matrix elements with these (see #294 or here in the documentation)</li>
+          <li>fixed problems with the database download</li>
+          <li>improved documentation (added different versions, added FAQs, ...)</li>
+        </ul>
+      </description>
+    </release>
     <release version="v2.2.2" date="2025-08-29" type="stable"/>
     <release version="v2.2.1" date="2025-07-30" type="stable"/>
     <release version="v2.2.0" date="2025-07-07" type="stable">
