@@ -71,8 +71,8 @@ modules:
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/12.0.0.tar.gz
-        sha256: aa3e8fbb6a0066c03454434add1f1fc23299e85758ceec0d7d2d974431481e40
+        url: https://github.com/fmtlib/fmt/archive/12.1.0.tar.gz
+        sha256: ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -143,8 +143,8 @@ modules:
       - -DTBB_STRICT=Off
     sources:
       - type: archive
-        url: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.2.0.tar.gz
-        sha256: f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b
+        url: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
+        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
         x-checker-data:
           type: anitya
           project-id: 227581
