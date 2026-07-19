@@ -1,11 +1,11 @@
 app-id: org.pairinteraction.Pairinteraction
 
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 
 base: io.qt.PySide.BaseApp
-base-version: '6.9'
+base-version: '6.10'
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 build-options:
@@ -35,8 +35,8 @@ modules:
       - PREFIX=/app
     sources:
       - type: archive
-        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.33.tar.gz
-        sha256: 6761af1d9f5d353ab4f0b7497be2643313b36c8f31caec0144bfef198e71e6ab
+        url: https://github.com/xianyi/OpenBLAS/archive/v0.3.34.tar.gz
+        sha256: cd7e129868320cc2d033afa920e31202dfe0b8066a5b66661900ccc0f197dfed
         x-checker-data:
           type: anitya
           project-id: 2540
@@ -71,8 +71,8 @@ modules:
       - -DFMT_TEST=Off
     sources:
       - type: archive
-        url: https://github.com/fmtlib/fmt/archive/12.1.0.tar.gz
-        sha256: ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea
+        url: https://github.com/fmtlib/fmt/archive/12.2.0.tar.gz
+        sha256: 8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0
         x-checker-data:
           type: anitya
           project-id: 11526
@@ -143,8 +143,8 @@ modules:
       - -DTBB_STRICT=Off
     sources:
       - type: archive
-        url: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2023.0.0.tar.gz
-        sha256: f8767b971ec6aea25dde58ae0f593e94e7aa75a739a86f67967012f69e2199b1
+        url: https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2023.1.0.tar.gz
+        sha256: 191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070
         x-checker-data:
           type: anitya
           project-id: 227581
@@ -173,24 +173,26 @@ modules:
           -DFETCHCONTENT_SOURCE_DIR_HTTPLIB=/run/build/pairinteraction/_deps/httplib
           -DFETCHCONTENT_SOURCE_DIR_MINIZ=/run/build/pairinteraction/_deps/miniz
     build-commands:
+      - git lfs pull
       - pip3 install --verbose --exists-action=i --no-index --no-deps --no-build-isolation
         --prefix=${FLATPAK_DEST} "."
     test-commands:
       - pytest --verbose -s
     sources:
-      - type: archive
-        url: https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.3.0.tar.gz
-        sha256: ee8d1541b0ab4a2cbb74e5690c52bd68468183d51ff14db19ee7374fa84211e4
+      - type: git
+        url: https://github.com/pairinteraction/pairinteraction
+        tag: v2.5.1
+        commit: 5563f05fce767be2a94a035b23ceb90149e636f0
       - dest: _deps/duckdb
         type: archive
-        url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-amd64.zip
-        sha256: 767c4163df6c6fb8dc07d44d6db3d081437544282185f4aae9bd1a9d9517a6c9
+        url: https://install.duckdb.org/v1.4.3/libduckdb-linux-amd64.zip
+        sha256: 3c7bb8d586d39ccce56442c3f6bafa97f53d7b6bb5405dac827442fcb31494aa
         only-arches:
           - x86_64
       - dest: _deps/duckdb
         type: archive
-        url: https://github.com/duckdb/duckdb/releases/download/v0.8.1/libduckdb-linux-aarch64.zip
-        sha256: dc396aa224bcc190f29c9b3993ea366cb75f6b5edc28028484520d74e1ae590b
+        url: https://install.duckdb.org/v1.4.3/libduckdb-linux-arm64.zip
+        sha256: 2882ed153f620a7f185b232d13694d481db3458ad1e4c04a4775d97b60567b4a
         only-arches:
           - aarch64
       - dest: _deps/doctest
@@ -199,8 +201,8 @@ modules:
         sha256: 73381c7aa4dee704bd935609668cf41880ea7f19fa0504a200e13b74999c2d70
       - dest: _deps/httplib
         type: archive
-        url: https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.25.0.tar.gz
-        sha256: ac7c59fa72325d4cb9f73af266312d82632ac35a5c4c8a1be620c1f946ec9cea
+        url: https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.30.1.tar.gz
+        sha256: 2818b183757e29dd52b47a185f0cea9ef2d0fba377d8710b450a26328e51c2fe
       - dest: _deps/miniz
         type: archive
         url: https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
