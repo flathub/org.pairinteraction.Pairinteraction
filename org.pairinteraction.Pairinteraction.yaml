@@ -63,24 +63,6 @@ modules:
     cleanup:
       - '*'
 
-  - name: fmt
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_POSITION_INDEPENDENT_CODE=On
-      - -DFMT_TEST=Off
-    sources:
-      - type: archive
-        url: https://github.com/fmtlib/fmt/archive/12.2.0.tar.gz
-        sha256: 8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0
-        x-checker-data:
-          type: anitya
-          project-id: 11526
-          stable-only: true
-          url-template: https://github.com/fmtlib/fmt/archive/$version.tar.gz
-    cleanup:
-      - '*'
-
   - name: spdlog
     buildsystem: cmake-ninja
     builddir: true
