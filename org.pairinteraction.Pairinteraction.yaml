@@ -95,7 +95,7 @@ modules:
           type: anitya
           project-id: 11152
           stable-only: true
-          url-template: https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz
+          url-template: https://github.com/nlohmann/json/archive/refs/tags/v$version.tar.gz
     cleanup:
       - '*'
 
