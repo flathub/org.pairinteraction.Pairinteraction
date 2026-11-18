@@ -163,8 +163,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/pairinteraction/pairinteraction
-        tag: v2.5.1
-        commit: 5563f05fce767be2a94a035b23ceb90149e636f0
+        tag: v2.6.0
+        commit: 2667185703d4f897a4b05a0f90904ca87834302f
       - dest: _deps/duckdb
         type: archive
         url: https://install.duckdb.org/v1.4.3/libduckdb-linux-amd64.zip
